@@ -4,9 +4,10 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-langchain = "*"
+langchain = "==0.0.190"
 
 [dev-packages]
 
 [requires]
-python_version = "2.7"
+python_version = "3.9"
+python_full_version = "3.9.5"
