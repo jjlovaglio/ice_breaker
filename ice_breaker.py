@@ -2,6 +2,7 @@
 from langchain import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
+from third_parties import linkedin
 
 information = """
 Elon Reeve Musk (Pretoria, 28 de junio de 1971), conocido como Elon Musk, es un empresario, inversor y magnate sudafricano que también posee las nacionalidades canadiense y estadounidense. Es el fundador, consejero delegado e ingeniero jefe de SpaceX; inversor ángel, director general y arquitecto de productos de Tesla, Inc.; fundador de The Boring Company; cofundador de Neuralink y OpenAI, aunque ya no tiene más participación en esta última por desacuerdos en el rumbo de la empresa, además de ser el director de tecnología de X Corp..4​ Con un patrimonio neto estimado en unos 207 mil millones de dólares en junio de 2023,5​ Musk es la persona más rica del mundo según el índice de multimillonarios de Bloomberg y la lista de multimillonarios en tiempo real de Forbes.6​7​
@@ -17,20 +18,23 @@ if __name__ == '__main__':
     print('hello LangChain')
     # print(os.environ['OPENAI_API_KEY'])
 
-    summary_template = """
-        given the Linkedin information {information} about a person from I want you to create:
-        1. a short summary
-        2. two interesting facts about them
-    """
+    # summary_template = """
+    #     given the Linkedin information {information} about a person from I want you to create:
+    #     1. a short summary
+    #     2. two interesting facts about them
+    # """
 
-    summary_prompt_template = PromptTemplate(
-        input_variables=["information"], template=summary_template
-    )
+    # summary_prompt_template = PromptTemplate(
+    #     input_variables=["information"], template=summary_template
+    # )
 
-    llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+    # llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 
-    chain = LLMChain(llm=llm, prompt=summary_prompt_template)
+    # chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-    print(chain.run(information=information))
+    # print(chain.run(information=information))
+
+    linkedin_data = linkedin.scrape_linkedin_profile(linkedin_profile_url='https://www.linkedin.com/in/jose-lovaglio-balbo/')
+    print(linkedin_data.text)
 
     
