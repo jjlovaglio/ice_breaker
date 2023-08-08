@@ -9,7 +9,6 @@ from third_parties import linkedin
 if __name__ == "__main__":
     print("hello LangChain")
 
-
     summary_template = """
         given the Linkedin information {information} about a person from I want you to create:
         1. a short summary
