@@ -4,12 +4,12 @@ from langchain import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 from third_parties.linkedin import scrape_linkedin_profile
-from agents import linkedin_lookup_agent
+from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 
 if __name__ == "__main__":
     print("hello LangChain")
 
-    linkedin_profile_url = linkedin_lookup_agent(name="Aldana Maldonado")
+    linkedin_profile_url = linkedin_lookup_agent(name="Eden Marco Udemy") # El crawler funciona para pocos casos.
 
     summary_template = """
         given the Linkedin information {information} about a person from I want you to create:
